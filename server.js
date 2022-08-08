@@ -6,5 +6,5 @@ app.use(express.json());
 const solvesRouter = require('./routes/number');
 app.use('/number', solvesRouter);
 
-port = 3000 || process.env.PORT;
+port = 3001 || process.env.PORT;
 app.listen(port, () => {console.log("Server is running on port " + port)});
