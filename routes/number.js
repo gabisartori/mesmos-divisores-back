@@ -25,7 +25,10 @@ router.get('/:num', (req, res) => {
         }        
         //res.status(200).json([numbers, total]);
         let end = new Date();
-        res.status(200).json([total, end.getTime() - start.getTime()]);
+        res.status(200).json({
+            total: total,
+            tempo: end.getTime() - start.getTime()
+        });
     }catch (err){
         res.status(500).json({message: err.message});
     }
