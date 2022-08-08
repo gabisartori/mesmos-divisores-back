@@ -11,19 +11,21 @@ function P(n){
     return total;
 }
 
-router.post('/:num', (req, res) => {
+router.get('/:num', (req, res) => {
+    let start = new Date();
     try{
         let numbers = [];
         let total = 0;
-        let coiso = req.params.num;
-        for(var i = 0; i < coiso; i++){
+        let k = req.params.num;
+        for(var i = 0; i < k; i++){
             if (P(i) === P(i+1)){
                 numbers.push(i);
                 total++;
             }
         }        
         //res.status(200).json([numbers, total]);
-        res.status(200).json(total);
+        let end = new Date();
+        res.status(200).json([total, end.getTime() - start.getTime()]);
     }catch (err){
         res.status(500).json({message: err.message});
     }
